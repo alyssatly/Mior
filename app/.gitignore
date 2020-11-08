@@ -1,1 +1,17 @@
+.iml
+.gradle
+/local.properties
+/.idea/workspace.xml
+/.idea/libraries
+.DS_Store
 /build
+/captures
+.externalNativeBuild
+
+.idea
+caches/
+daemon/
+native/
+wrapper/
+local.properties
+.gradle/
