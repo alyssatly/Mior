@@ -1,7 +1,6 @@
 package com.example.mior;
 
 import android.content.Context;
-import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,11 +19,16 @@ public class recyclerViewAdapter extends RecyclerView.Adapter<recyclerViewAdapte
     String remindersData[], descriptionsData[];
     ArrayList<Integer> images;
     Context context;
+    OnClickListener clickListener;
 
+    public interface OnClickListener {
+        void onItemClicked(int position);
+    }
 
-    public recyclerViewAdapter(Context ct, ArrayList<Alert> notifications)
+    public recyclerViewAdapter(Context ct, ArrayList<Alert> notifications, OnClickListener clickListener)
     {
         this.notifications = notifications;
+        this.clickListener = clickListener;
         context = ct;
     }
 
@@ -55,21 +59,13 @@ public class recyclerViewAdapter extends RecyclerView.Adapter<recyclerViewAdapte
         for (int i = 0; i < notifications.size(); i++) {
             images.add(notifications.get(i).GetImage());
         }
-        holder.reminders_txt.setText(remindersData[position]);
-        holder.descriptions_txt.setText(descriptionsData[position]);
-        holder.myImage.setImageResource(images.get(position));
 
-        holder.mainLayout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(context, EditReminderActivity.class);
-                intent.putExtra("Reminder", remindersData[position]);
-                intent.putExtra("Description", descriptionsData[position]);
-                intent.putExtra("Image", images.get(position));
-                System.out.println("HI");
-                context.startActivity(intent);
-            }
-        });
+        ArrayList<Integer> minutes = new ArrayList<Integer>();
+
+        for (int i = 0; i < notifications.size(); i++) {
+            minutes.add((notifications.get(i).GetInterval())/60);
+        }
+        holder.bind(remindersData[position],descriptionsData[position],images.get(position),minutes.get(position).toString());
     }
 
     @Override
@@ -79,7 +75,7 @@ public class recyclerViewAdapter extends RecyclerView.Adapter<recyclerViewAdapte
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
 
-        TextView reminders_txt, descriptions_txt;
+        TextView reminders_txt, descriptions_txt,minute_txt;
         ImageView myImage;
         ConstraintLayout mainLayout;
 
@@ -89,6 +85,22 @@ public class recyclerViewAdapter extends RecyclerView.Adapter<recyclerViewAdapte
             descriptions_txt = itemView.findViewById(R.id.descriptions_txt);
             myImage = itemView.findViewById(R.id.myImgView);
             mainLayout = itemView.findViewById(R.id.mainLayout);
+            //minute_txt = itemView.findViewById(R.id.minText);
+        }
+
+        public void bind(String reminder,String descp,int pic,String min){
+            reminders_txt.setText(reminder);
+            descriptions_txt.setText(descp);
+            myImage.setImageResource(pic);
+            //SET MINUTES TEXT FIELD
+            //minute_txt.setText(min);
+
+            mainLayout.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    clickListener.onItemClicked(getAdapterPosition());
+                }
+            });
         }
     }
 }
