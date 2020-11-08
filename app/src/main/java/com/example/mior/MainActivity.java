@@ -1,40 +1,45 @@
 package com.example.mior;
 
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import java.util.ArrayList;
-
 public class MainActivity extends AppCompatActivity {
 
-    RecyclerView recyclerView;
-    Game LeagueOfLegends = new Game("League", 9999999, 2100, R.drawable.blue_mascot);
-
-    String reminders[], descriptions[];
-    ArrayList<Integer> images; // = {images for each};
+    Button btnAddAlert;
+    //RecyclerView recyclerView;
+    Game LeagueOfLegends;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        LeagueOfLegends.AddNotification("Drink Water", "Reminder to drink some water!", "custom", 15, false, 0, 0, R.drawable.blue_mascot);
+        btnAddAlert = findViewById(R.id.btnAddAlert);
+        LeagueOfLegends = new Game("League", 9999999, 2100, R.drawable.blue_mascot);
+
         LeagueOfLegends.AddNotification("Stretch", "Reminder to stand up and stretch!", "custom", 15, false, 0, 0, R.drawable.blue_mascot);
         LeagueOfLegends.AddNotification("Eat", "Reminder to eat!", "custom", 15, false, 0, 0, R.drawable.blue_mascot);
 
-        recyclerView = findViewById(R.id.recyclerView);
+        RecyclerView recyclerView = findViewById(R.id.recyclerView);
 
-        reminders = LeagueOfLegends.DisplayNotifications().toArray(new String[0]);
-        descriptions = LeagueOfLegends.DisplayDescriptions().toArray(new String[0]);
-        images = LeagueOfLegends.DisplayImages();
+        recyclerViewAdapter myAdapter = new recyclerViewAdapter(this, LeagueOfLegends.GetNotifications());
 
-        recyclerViewAdapter myAdapter = new recyclerViewAdapter(this, reminders, descriptions, images);
-
-        recyclerView.setAdapter(myAdapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        recyclerView.setAdapter(myAdapter);
+
+        btnAddAlert.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //bring it to another screen that allows you to create
+                LeagueOfLegends.AddNotification("Drink Water", "Reminder to drink some water!", "custom", 15, false, 0, 0, R.drawable.blue_mascot);
+                myAdapter.notifyItemInserted(LeagueOfLegends.GetNotifications().size() - 1);
+            }
+        });
     }
 
 

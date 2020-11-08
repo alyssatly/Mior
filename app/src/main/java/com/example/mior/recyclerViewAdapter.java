@@ -2,7 +2,6 @@ package com.example.mior;
 
 import android.content.Context;
 import android.content.Intent;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,17 +16,16 @@ import java.util.ArrayList;
 
 public class recyclerViewAdapter extends RecyclerView.Adapter<recyclerViewAdapter.MyViewHolder> {
 
+    ArrayList<Alert> notifications;
     String remindersData[], descriptionsData[];
     ArrayList<Integer> images;
     Context context;
 
 
-    public recyclerViewAdapter(Context ct, String s1[], String s2[], ArrayList<Integer> img)
+    public recyclerViewAdapter(Context ct, ArrayList<Alert> notifications)
     {
+        this.notifications = notifications;
         context = ct;
-        remindersData = s1;
-        descriptionsData = s2;
-        images = img;
     }
 
     @NonNull
@@ -40,6 +38,23 @@ public class recyclerViewAdapter extends RecyclerView.Adapter<recyclerViewAdapte
 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) { // sets the item shown in position to its values
+        ArrayList<String> temp = new ArrayList<String>();
+        for (int i = 0; i < notifications.size(); i++) {
+            temp.add(notifications.get(i).GetName());
+        }
+        remindersData = temp.toArray(new String[0]);
+
+        temp = new ArrayList<String>();
+        for (int i = 0; i < notifications.size(); i++){
+            temp.add(notifications.get(i).GetMessage());
+        }
+        descriptionsData = temp.toArray(new String[0]);
+
+        images = new ArrayList<Integer>();
+
+        for (int i = 0; i < notifications.size(); i++) {
+            images.add(notifications.get(i).GetImage());
+        }
         holder.reminders_txt.setText(remindersData[position]);
         holder.descriptions_txt.setText(descriptionsData[position]);
         holder.myImage.setImageResource(images.get(position));
@@ -59,7 +74,7 @@ public class recyclerViewAdapter extends RecyclerView.Adapter<recyclerViewAdapte
 
     @Override
     public int getItemCount() {
-        return remindersData.length;
+        return notifications.size();
     }
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
