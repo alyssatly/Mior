@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 .iml
+=======
+*.iml
+>>>>>>> master
 .gradle
 /local.properties
 /.idea/workspace.xml
