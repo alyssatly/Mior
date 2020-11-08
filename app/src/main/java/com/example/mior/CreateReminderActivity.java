@@ -1,6 +1,7 @@
 package com.example.mior;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
@@ -33,7 +34,12 @@ public class CreateReminderActivity extends AppCompatActivity {
         btnCreate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                Intent intent = new Intent();
+                intent.putExtra(MainActivity.TITLE_TEXT,title.getText().toString());
+                intent.putExtra(MainActivity.DESCP_TEXT,description.getText().toString());
+                intent.putExtra(MainActivity.MINUTE_TEXT,minutes.getText().toString());
+                setResult(RESULT_OK,intent);
+                finish();
             }
         });
     }
