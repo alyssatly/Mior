@@ -7,3 +7,10 @@
 /build
 /captures
 .externalNativeBuild
+
+.idea
+caches/
+daemon/
+native/
+wrapper/
+local.properties
