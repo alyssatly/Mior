@@ -12,7 +12,7 @@ import android.widget.Toast;
 public class EditReminderActivity extends AppCompatActivity {
 
     ImageView mainImageView;
-    TextView title, description;
+    EditText title, description;
 
     String titleData, descData;
     int imgData;
