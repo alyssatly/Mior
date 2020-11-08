@@ -8,23 +8,26 @@ public class Game {
     private int roundLen;  // average length of a round in seconds
     private int gameLen; // average length of a game in seconds
     private ArrayList<Alert> notifications; // ArrayList of the notification objects for a given game
+    private int image;
 
 
     // Constructor
-    public Game(String newName, int newRoundLen, int newGameLen){
+    public Game(String newName, int newRoundLen, int newGameLen, int newImage){
         active = false;
         name = newName;
         roundLen = newRoundLen;
         gameLen = newGameLen;
         notifications = new ArrayList<Alert>();
+        image = newImage;
     }
 
 
     // Replaces values of current attributes with the given ones
-    public void Edit(String newName, int newRoundLen, int newGameLen){
+    public void Edit(String newName, int newRoundLen, int newGameLen, int newImage){
         name = newName;
         roundLen = newRoundLen;
         gameLen = newGameLen;
+        image = newImage;
 
         for (int i = 0; i < notifications.size(); i++) {
             notifications.get(i).SetGameInfo(roundLen, gameLen);;
@@ -43,7 +46,7 @@ public class Game {
 
 
     // Adds a notification object with the given parameters, returns true if succeds, returns false if the given name already exists
-    public boolean AddNotification(String name, String message, String intervalType, int interval, boolean continuousRemind, int extraAlerts, int extraInterval){
+    public boolean AddNotification(String name, String message, String intervalType, int interval, boolean continuousRemind, int extraAlerts, int extraInterval, int image){
 
 //        for (int i = 0; i < notifications.size(); i++){
 //            if (notifications.get(i).GetName() == name){
@@ -51,7 +54,7 @@ public class Game {
 //            }
 //        }
 
-        Alert newAlert = new Alert(name, message, intervalType, interval, continuousRemind, extraAlerts, extraInterval);
+        Alert newAlert = new Alert(name, message, intervalType, interval, continuousRemind, extraAlerts, extraInterval, image);
         newAlert.SetGameInfo(roundLen, gameLen);
 
         notifications.add(newAlert);
@@ -118,7 +121,7 @@ public class Game {
         }
 
         // Should never get here
-        return new Alert("", "", "", 0, false, 0, 0);
+        return new Alert("", "", "", 0, false, 0, 0, 0);
     }
 
 

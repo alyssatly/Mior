@@ -14,7 +14,7 @@ public class Home {
 
     // Adds a game object with the given parameters, returns true if succeds,
     // returns false if the given name already exists, can also give a game name as a preset to set the length parameters
-    public boolean AddGame(String newName, int newRoundLen, int newGameLen, String preset){
+    public boolean AddGame(String newName, int newRoundLen, int newGameLen, String preset, int newImage){
 
         for (int i = 0; i < games.size(); i++){
             if (games.get(i).GetName() == newName){
@@ -60,7 +60,7 @@ public class Home {
         }
 
 
-        Game newGame = new Game(newName, newRoundLen, newGameLen);
+        Game newGame = new Game(newName, newRoundLen, newGameLen, newImage);
 
         games.add(newGame);
         // games.add(name);
@@ -108,7 +108,7 @@ public class Home {
         }
 
         // Should never get here
-        return new Game("", 0, 0);
+        return new Game("", 0, 0, 0);
     }
 
 

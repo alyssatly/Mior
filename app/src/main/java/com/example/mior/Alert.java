@@ -17,11 +17,12 @@ public class Alert {
     private int gameLength;
     private Timer timer;  //Internal timer
     private Timer subTimer; // Internal timer for extra alerts
+    private int image;  //Image id
 
 
     // Constructor
     public Alert(String name2, String message2, String intervalType2, int interval2,
-                        boolean continuousRemind2, int extraAlerts2, int extraInterval2){
+                        boolean continuousRemind2, int extraAlerts2, int extraInterval2, int image2){
 
         active = false;
         name = name2;
@@ -34,11 +35,12 @@ public class Alert {
         extraAlertsDone = 0;
         timer = new Timer();
         subTimer = new Timer();
+        image = image2;
     }
 
 
     // Changes the given notification object's attributes to those given
-    public void Edit(String name2, String message2, String intervalType2, int interval2, boolean continuousRemind2, int extraAlerts2, int extraInterval2){
+    public void Edit(String name2, String message2, String intervalType2, int interval2, boolean continuousRemind2, int extraAlerts2, int extraInterval2, int image2){
 
         name = name2;
         message = message2;
@@ -47,6 +49,7 @@ public class Alert {
         continuousRemind = continuousRemind2;
         extraAlerts = extraAlerts2;
         extraInterval = extraInterval2;
+        image = image2;
     }
 
 
