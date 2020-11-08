@@ -26,6 +26,10 @@ public class Home {
             newRoundLen = 9999999;  // Has no rounds, so make so big so it doesn't occur
             newGameLen = 2100;  //35 min
         }
+        else if (preset == "LoL"){
+            newRoundLen = 9999999;  // Has no rounds, so make so big so it doesn't occur
+            newGameLen = 1500;  // 25 min
+        }
         else if (preset == "RainbowSixCasual"){
             newRoundLen = 300; // 4 min + 1 min op select
             newGameLen = 1200;  // 16 min avg from possible 3-5 games
@@ -50,7 +54,7 @@ public class Home {
             newRoundLen = 9999999;
             newGameLen = 900;  // 15 min avg
         }
-        else if (preset == "Pub"){
+        else if (preset == "Pubg"){
             newRoundLen = 9999999;
             newGameLen = 900;  // 15 min avg
         }

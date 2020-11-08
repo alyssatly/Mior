@@ -11,5 +11,10 @@
 /build
 /captures
 .externalNativeBuild
-.cxx
+
+.idea
+caches/
+daemon/
+native/
+wrapper/
 local.properties
