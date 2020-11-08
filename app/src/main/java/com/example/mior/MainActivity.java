@@ -1,12 +1,6 @@
 package com.example.mior;
 
-import android.app.Notification;
-import android.os.Build;
 import android.os.Bundle;
-
-import android.view.View;
-
-import android.widget.EditText;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -42,5 +36,7 @@ public class MainActivity extends AppCompatActivity {
         recyclerView.setAdapter(myAdapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
     }
+
+
 
 }

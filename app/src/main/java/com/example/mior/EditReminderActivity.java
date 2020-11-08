@@ -1,18 +1,19 @@
 package com.example.mior;
 
-import androidx.appcompat.app.AppCompatActivity;
-
+import android.app.Activity;
 import android.os.Bundle;
-import android.util.Log;
+import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 public class EditReminderActivity extends AppCompatActivity {
 
     ImageView mainImageView;
-    EditText title, description;
+    EditText title, description,minutes;
 
     String titleData, descData;
     int imgData;
@@ -47,5 +48,10 @@ public class EditReminderActivity extends AppCompatActivity {
         title.setText(titleData);
         description.setText(descData);
         mainImageView.setImageResource(imgData);
+    }
+
+    public void hideKeyboard(View view) {
+        InputMethodManager imm = (InputMethodManager)getSystemService(Activity.INPUT_METHOD_SERVICE);
+        imm.hideSoftInputFromWindow(view.getWindowToken(),0);
     }
 }
