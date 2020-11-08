@@ -110,4 +110,17 @@ public class Home {
         // Should never get here
         return new Game("", 0, 0);
     }
+
+
+    // Given a game name, returns the index of that game
+    public int GetGameIndex(String name){
+        for (int i = 0; i < games.size(); i++){
+            if (games.get(i).GetName() == name){
+                return i;
+            }
+        }
+
+        // Should never get here
+        return -1;
+    }
 }

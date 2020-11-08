@@ -120,4 +120,17 @@ public class Game {
         // Should never get here
         return new Alert("", "", "", 0, false, 0, 0);
     }
+
+
+    // Given an alert name, returns the index of that alert
+    public int GetGameIndex(String name){
+        for (int i = 0; i < notifications.size(); i++){
+            if (notifications.get(i).GetName() == name){
+                return i;
+            }
+        }
+
+        // Should never get here
+        return -1;
+    }
 }
