@@ -1,3 +1,15 @@
 <resources>
     <string name="app_name">Mior</string>
+
+    <string-array name="Reminders">
+        <item>Drink Water</item>
+        <item>Stretch</item>
+        <item>Posture Check</item>
+    </string-array>
+
+    <string-array name="Descriptions">
+        <item>Reminder to drink your water!</item>
+        <item>Reminder to stand up and do stretches!</item>
+        <item>Reminder to make sure your sitting posture is good!</item>
+    </string-array>
 </resources>
