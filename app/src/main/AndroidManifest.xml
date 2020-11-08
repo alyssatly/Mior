@@ -10,10 +10,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Mior"
         android:usesCleartextTraffic="true">
-        <activity android:name=".EditReminderActivity"
-            android:parentActivityName=".MainActivity"
-            android:label="Details"/>
-
+        <activity android:name=".CreateReminderActivity"
+            android:parentActivityName=".MainActivity"></activity>
+        <activity
+            android:name=".EditReminderActivity"
+            android:label="Details"
+            android:parentActivityName=".MainActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

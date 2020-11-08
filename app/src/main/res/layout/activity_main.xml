@@ -12,10 +12,17 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="587dp" />
+
+    <Button
+        android:id="@+id/btnAddAlert"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Add Reminder"
+        app:backgroundTint="#51B9CD" />
 
 
-<!--    <EditText-->
+    <!--    <EditText-->
 <!--        android:id="@+id/edit_text_title"-->
 <!--        android:layout_width="match_parent"-->
 <!--        android:layout_height="wrap_content"-->
