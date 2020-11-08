@@ -1,5 +1,6 @@
 package com.example.mior;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -13,6 +14,7 @@ public class MainActivity extends AppCompatActivity {
     Button btnAddAlert;
     //RecyclerView recyclerView;
     Game LeagueOfLegends;
+    public static final int CREATE_REMINDER_CODE = 20;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,12 +38,11 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 //bring it to another screen that allows you to create
-                LeagueOfLegends.AddNotification("Drink Water", "Reminder to drink some water!", "custom", 15, false, 0, 0, R.drawable.blue_mascot);
-                myAdapter.notifyItemInserted(LeagueOfLegends.GetNotifications().size() - 1);
+//                LeagueOfLegends.AddNotification("Drink Water", "Reminder to drink some water!", "custom", 15, false, 0, 0, R.drawable.blue_mascot);
+//                myAdapter.notifyItemInserted(LeagueOfLegends.GetNotifications().size() - 1);
+                Intent i = new Intent(MainActivity.this,CreateReminderActivity.class);
+                startActivityForResult(i,CREATE_REMINDER_CODE);
             }
         });
     }
-
-
-
 }

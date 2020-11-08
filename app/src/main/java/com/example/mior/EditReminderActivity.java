@@ -14,7 +14,6 @@ public class EditReminderActivity extends AppCompatActivity {
 
     ImageView mainImageView;
     EditText title, description,minutes;
-
     String titleData, descData;
     int imgData;
 
@@ -26,6 +25,7 @@ public class EditReminderActivity extends AppCompatActivity {
         mainImageView = findViewById(R.id.mainImageView);
         title = findViewById(R.id.title);
         description = findViewById(R.id.description);
+        minutes = findViewById(R.id.minText);
 
         getData();
         setData();
