@@ -24,21 +24,6 @@ public class Game {
 
     // Replaces values of current attributes with the given ones
     public void Edit(String newName, int newRoundLen, int newGameLen, int newImage){
-
-        // keep checking names until the name of the alert you're trying to add is unique, adding Copy every time it's not
-//        boolean loop = loop = true;
-//        while (loop)
-//        {
-//            loop = false;
-//            for (int i = 0; i < notifications.size(); i++){
-//                if (notifications.get(i).GetName() == name){
-//                    name += " Copy";
-//                    loop = true;
-////                return false;
-//                }
-//            }
-//        }
-
         name = newName;
         roundLen = newRoundLen;
         gameLen = newGameLen;
@@ -63,17 +48,9 @@ public class Game {
     // Adds a notification object with the given parameters, returns true if succeds, returns false if the given name already exists
     public boolean AddNotification(String name, String message, String intervalType, int interval, boolean continuousRemind, int extraAlerts, int extraInterval, int image){
 
-        // keep checking names until the name of the alert you're trying to add is unique, adding Copy every time it's not
-//        boolean loop = loop = true;
-//        while (loop)
-//        {
-//            loop = false;
-//            for (int i = 0; i < notifications.size(); i++){
-//                if (notifications.get(i).GetName() == name){
-//                    name += " Copy";
-//                    loop = true;
-////                return false;
-//                }
+//        for (int i = 0; i < notifications.size(); i++){
+//            if (notifications.get(i).GetName() == name){
+//                return false;
 //            }
 //        }
 
@@ -109,6 +86,8 @@ public class Game {
         return name;
     }
 
+    public int GetImage() { return image; }
+
     public int GetRoundLen()
     {
         return roundLen;
@@ -129,6 +108,28 @@ public class Game {
 
         for (int i = 0; i < notifications.size(); i++){
             temp.add(notifications.get(i).GetName());
+        }
+
+        return temp;
+    }
+
+    // Returns a string list of all the notification descriptions
+    public ArrayList<String> DisplayDescriptions(){
+        ArrayList<String> temp = new ArrayList<String>();
+
+        for (int i = 0; i < notifications.size(); i++){
+            temp.add(notifications.get(i).GetMessage());
+        }
+
+        return temp;
+    }
+
+    // Returns a string list of all the images
+    public ArrayList<Integer> DisplayImages(){
+        ArrayList<Integer> temp = new ArrayList<Integer>();
+
+        for (int i = 0; i < notifications.size(); i++){
+            temp.add(notifications.get(i).GetImage());
         }
 
         return temp;

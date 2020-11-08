@@ -53,7 +53,7 @@ public class Alert {
     }
 
 
-    // Updates the game info, should be called whenever a game object is edited
+    // Updates the game info
     public void SetGameInfo(int roundLength2, int gameLength2){
         roundLength = roundLength2;
         gameLength = gameLength2;
@@ -185,6 +185,8 @@ public class Alert {
     public String GetMessage(){
         return message;
     }
+
+    public int GetImage() { return image; }
 
     public String GetIntervalType(){
         return intervalType;

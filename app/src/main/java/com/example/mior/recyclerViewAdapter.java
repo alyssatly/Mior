@@ -13,20 +13,21 @@ import androidx.annotation.NonNull;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.util.ArrayList;
+
 public class recyclerViewAdapter extends RecyclerView.Adapter<recyclerViewAdapter.MyViewHolder> {
 
     String remindersData[], descriptionsData[];
-    int images[];
+    ArrayList<Integer> images;
     Context context;
 
 
-    public recyclerViewAdapter(Context ct, String s1[], String s2[], int img[])
+    public recyclerViewAdapter(Context ct, String s1[], String s2[], ArrayList<Integer> img)
     {
         context = ct;
         remindersData = s1;
         descriptionsData = s2;
         images = img;
-        System.out.println("HI");
     }
 
     @NonNull
@@ -41,7 +42,7 @@ public class recyclerViewAdapter extends RecyclerView.Adapter<recyclerViewAdapte
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) { // sets the item shown in position to its values
         holder.reminders_txt.setText(remindersData[position]);
         holder.descriptions_txt.setText(descriptionsData[position]);
-        holder.myImage.setImageResource(images[position]);
+        holder.myImage.setImageResource(images.get(position));
 
         holder.mainLayout.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -49,7 +50,7 @@ public class recyclerViewAdapter extends RecyclerView.Adapter<recyclerViewAdapte
                 Intent intent = new Intent(context, EditReminderActivity.class);
                 intent.putExtra("Reminder", remindersData[position]);
                 intent.putExtra("Description", descriptionsData[position]);
-                intent.putExtra("Image", images[position]);
+                intent.putExtra("Image", images.get(position));
                 System.out.println("HI");
                 context.startActivity(intent);
             }
