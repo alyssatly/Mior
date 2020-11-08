@@ -15,8 +15,8 @@ public class Alert {
     private int extraAlertsDone; // How many extra alerts have been sent
     private int roundLength;
     private int gameLength;
-    Timer timer;  //Internal timer
-    Timer subTimer; // Internal timer for extra alerts
+    private Timer timer;  //Internal timer
+    private Timer subTimer; // Internal timer for extra alerts
 
 
     // Constructor

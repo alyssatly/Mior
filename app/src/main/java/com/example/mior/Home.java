@@ -97,4 +97,17 @@ public class Home {
 
         return temp;
     }
+
+
+    // Given a game name, returns a reference to that game
+    public Game GetGameReference(String name){
+        for (int i = 0; i < games.size(); i++){
+            if (games.get(i).GetName() == name){
+                return games.get(i);
+            }
+        }
+
+        // Should never get here
+        return new Game("", 0, 0);
+    }
 }

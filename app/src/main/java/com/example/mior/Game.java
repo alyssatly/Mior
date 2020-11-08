@@ -45,11 +45,11 @@ public class Game {
     // Adds a notification object with the given parameters, returns true if succeds, returns false if the given name already exists
     public boolean AddNotification(String name, String message, String intervalType, int interval, boolean continuousRemind, int extraAlerts, int extraInterval){
 
-        for (int i = 0; i < notifications.size(); i++){
-            if (notifications.get(i).GetName() == name){
-                return false;
-            }
-        }
+//        for (int i = 0; i < notifications.size(); i++){
+//            if (notifications.get(i).GetName() == name){
+//                return false;
+//            }
+//        }
 
         Alert newAlert = new Alert(name, message, intervalType, interval, continuousRemind, extraAlerts, extraInterval);
         newAlert.SetGameInfo(roundLen, gameLen);
@@ -106,5 +106,18 @@ public class Game {
         }
 
         return temp;
+    }
+
+
+    // Given an alert name, returns a reference to that alert
+    public Alert GetGameReference(String name){
+        for (int i = 0; i < notifications.size(); i++){
+            if (notifications.get(i).GetName() == name){
+                return notifications.get(i);
+            }
+        }
+
+        // Should never get here
+        return new Alert("", "", "", 0, false, 0, 0);
     }
 }
