@@ -24,6 +24,21 @@ public class Game {
 
     // Replaces values of current attributes with the given ones
     public void Edit(String newName, int newRoundLen, int newGameLen, int newImage){
+
+        // keep checking names until the name of the alert you're trying to add is unique, adding Copy every time it's not
+//        boolean loop = loop = true;
+//        while (loop)
+//        {
+//            loop = false;
+//            for (int i = 0; i < notifications.size(); i++){
+//                if (notifications.get(i).GetName() == name){
+//                    name += " Copy";
+//                    loop = true;
+////                return false;
+//                }
+//            }
+//        }
+
         name = newName;
         roundLen = newRoundLen;
         gameLen = newGameLen;
@@ -48,9 +63,17 @@ public class Game {
     // Adds a notification object with the given parameters, returns true if succeds, returns false if the given name already exists
     public boolean AddNotification(String name, String message, String intervalType, int interval, boolean continuousRemind, int extraAlerts, int extraInterval, int image){
 
-//        for (int i = 0; i < notifications.size(); i++){
-//            if (notifications.get(i).GetName() == name){
-//                return false;
+        // keep checking names until the name of the alert you're trying to add is unique, adding Copy every time it's not
+//        boolean loop = loop = true;
+//        while (loop)
+//        {
+//            loop = false;
+//            for (int i = 0; i < notifications.size(); i++){
+//                if (notifications.get(i).GetName() == name){
+//                    name += " Copy";
+//                    loop = true;
+////                return false;
+//                }
 //            }
 //        }
 

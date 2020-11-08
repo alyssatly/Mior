@@ -16,11 +16,25 @@ public class Home {
     // returns false if the given name already exists, can also give a game name as a preset to set the length parameters
     public boolean AddGame(String newName, int newRoundLen, int newGameLen, String preset, int newImage){
 
-        for (int i = 0; i < games.size(); i++){
-            if (games.get(i).GetName() == newName){
-                return false;
-            }
-        }
+        // keep checking names until the name of the alert you're trying to add is unique, adding Copy every time it's not
+//        boolean loop = loop = true;
+//        while (loop)
+//        {
+//            loop = false;
+//            for (int i = 0; i < games.size(); i++){
+//                if (games.get(i).GetName() == newName){
+//                    newName += " Copy";
+//                    loop = true;
+////                return false;
+//                }
+//            }
+//        }
+//
+//        for (int i = 0; i < games.size(); i++){
+//            if (games.get(i).GetName() == newName){
+//                return false;
+//            }
+//        }
 
         if (preset == "LoL"){
             newRoundLen = 9999999;  // Has no rounds, so make so big so it doesn't occur
