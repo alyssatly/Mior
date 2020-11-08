@@ -2,48 +2,22 @@ package com.example.mior;
 
 import java.util.ArrayList;
 
-public class Game {
+public class Home {
     private ArrayList<Game> games; // ArrayList of the notification objects for a given game
 
 
     // Constructor
-    public Game(String newName, int newRoundLen, int newGameLen){
-        active = false;
-        name = newName;
-        roundLen = newRoundLen;
-        gameLen = newGameLen;
+    public Home(String newName, int newRoundLen, int newGameLen){
         games = new ArrayList<Game>();
-    }
-
-
-    // Replaces values of current attributes with the given ones
-    public void Edit(String newName, int newRoundLen, int newGameLen){
-        name = newName;
-        roundLen = newRoundLen;
-        gameLen = newGameLen;
-
-        for (int i = 0; i < games.size(); i++) {
-            games.get(i).SetGameInfo(roundLen, gameLen);;
-        }
-    }
-
-
-    public void ToggleActive(){
-        active = !(active);
-
-        // Set all games' active state to be the same as the game's, so that turning on the game turns them all on, and turning off the game turns them all off
-        for (int i = 0; i < games.size(); i++){
-            games.get(i).SetActive(active);
-        }
     }
 
 
     // Adds a game object with the given parameters, returns true if succeds,
     // returns false if the given name already exists, can also give a game name as a preset to set the length parameters
-    public boolean AddGame(String newName, int newRoundLen, int newGameLen, StringPreset){
+    public boolean AddGame(String newName, int newRoundLen, int newGameLen, String preset){
 
         for (int i = 0; i < games.size(); i++){
-            if (games.get(i).GetName() == name){
+            if (games.get(i).GetName() == newName){
                 return false;
             }
         }
@@ -108,7 +82,8 @@ public class Game {
     }
 
 
-    // Getter functionpublic ArrayList<Game> Getgames(){
+    // Getter function
+     public ArrayList<Game> Getgames(){
         return games;
     }
 
