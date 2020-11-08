@@ -48,6 +48,17 @@ public class Game {
     // Adds a notification object with the given parameters, returns true if succeds, returns false if the given name already exists
     public boolean AddNotification(String name, String message, String intervalType, int interval, boolean continuousRemind, int extraAlerts, int extraInterval, int image){
 
+        boolean loop = true;
+        while (loop){
+            loop = false;
+            for (int i = 0; i < notifications.size(); i++){
+                if (notifications.get(i).GetName() == name){
+                    name += " Copy";
+                    loop = true;
+                }
+            }
+        }
+
 //        for (int i = 0; i < notifications.size(); i++){
 //            if (notifications.get(i).GetName() == name){
 //                return false;
